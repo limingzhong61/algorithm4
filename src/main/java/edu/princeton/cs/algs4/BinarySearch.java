@@ -1,18 +1,18 @@
 /******************************************************************************
  *  Compilation:  javac BinarySearch.java
- *  Execution:    java BinarySearch allowlist.txt < input.txt
+ *  Execution:    java BinarySearch whitelist.txt < input.txt
  *  Dependencies: In.java StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/11model/tinyAllowlist.txt
- *                https://algs4.cs.princeton.edu/11model/tinyText.txt
- *                https://algs4.cs.princeton.edu/11model/largeAllowlist.txt
- *                https://algs4.cs.princeton.edu/11model/largeText.txt
+ *  Data files:   http://algs4.cs.princeton.edu/11model/tinyW.txt
+ *                http://algs4.cs.princeton.edu/11model/tinyT.txt
+ *                http://algs4.cs.princeton.edu/11model/largeW.txt
+ *                http://algs4.cs.princeton.edu/11model/largeT.txt
  *
- *  % java BinarySearch tinyAllowlist.txt < tinyText.txt
+ *  % java BinarySearch tinyW.txt < tinyT.txt
  *  50
  *  99
  *  13
  *
- *  % java BinarySearch largeAllowlist.txt < largeText.txt | more
+ *  % java BinarySearch largeW.txt < largeT.txt | more
  *  499569
  *  984875
  *  295754
@@ -33,7 +33,7 @@ import java.util.Arrays;
  *  <p>
  *  The <em>indexOf</em> operations takes logarithmic time in the worst case.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -82,7 +82,7 @@ public class BinarySearch {
     }
 
     /**
-     * Reads in a sequence of integers from the allowlist file, specified as
+     * Reads in a sequence of integers from the whitelist file, specified as
      * a command-line argument; reads in integers from standard input;
      * prints to standard output those integers that do <em>not</em> appear in the file.
      *
@@ -92,22 +92,22 @@ public class BinarySearch {
 
         // read the integers from a file
         In in = new In(args[0]);
-        int[] allowlist = in.readAllInts();
+        int[] whitelist = in.readAllInts();
 
         // sort the array
-        Arrays.sort(allowlist);
+        Arrays.sort(whitelist);
 
-        // read integer key from standard input; print if not in allowlist
+        // read integer key from standard input; print if not in whitelist
         while (!StdIn.isEmpty()) {
             int key = StdIn.readInt();
-            if (BinarySearch.indexOf(allowlist, key) == -1)
+            if (BinarySearch.indexOf(whitelist, key) == -1)
                 StdOut.println(key);
         }
     }
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

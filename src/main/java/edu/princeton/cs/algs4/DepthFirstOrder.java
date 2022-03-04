@@ -3,8 +3,8 @@
  *  Execution:    java DepthFirstOrder digraph.txt
  *  Dependencies: Digraph.java Queue.java Stack.java StdOut.java
  *                EdgeWeightedDigraph.java DirectedEdge.java
- *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
- *                https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
  *
  *  Compute preorder and postorder for a digraph or edge-weighted digraph.
  *  Runs in O(E + V) time.
@@ -33,20 +33,24 @@
 
 package edu.princeton.cs.algs4;
 
+import com.mars.algorithms.chapter4_2.Digraph;
+import com.mars.algorithms.chapter4_4.DirectedEdge;
+import com.mars.algorithms.chapter4_4.EdgeWeightedDigraph;
+
 /**
  *  The {@code DepthFirstOrder} class represents a data type for 
  *  determining depth-first search ordering of the vertices in a digraph
  *  or edge-weighted digraph, including preorder, postorder, and reverse postorder.
  *  <p>
  *  This implementation uses depth-first search.
- *  Each constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the
- *  number of edges.
- *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
+ *  The constructor takes time proportional to <em>V</em> + <em>E</em>
+ *  (in the worst case),
+ *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ *  Afterwards, the <em>preorder</em>, <em>postorder</em>, and <em>reverse postorder</em>
+ *  operation takes take time proportional to <em>V</em>.
  *  <p>
  *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -243,7 +247,7 @@ public class DepthFirstOrder {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

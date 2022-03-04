@@ -2,7 +2,7 @@
  *  Compilation:  javac ST.java
  *  Execution:    java ST < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/35applications/tinyST.txt
+ *  Data files:   http://algs4.cs.princeton.edu/35applications/tinyST.txt
  *  
  *  Sorted symbol table implementation using a java.util.TreeMap.
  *  Does not allow duplicates.
@@ -31,21 +31,17 @@ import java.util.TreeMap;
  *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
- *  It requires that
+ *  This implementation uses a balanced binary search tree. It requires that
  *  the key type implements the {@code Comparable} interface and calls the
  *  {@code compareTo()} and method to compare two keys. It does not call either
  *  {@code equals()} or {@code hashCode()}.
+ *  The <em>put</em>, <em>contains</em>, <em>remove</em>, <em>minimum</em>,
+ *  <em>maximum</em>, <em>ceiling</em>, and <em>floor</em> operations each take
+ *  logarithmic time in the worst case.
+ *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
+ *  Construction takes constant time.
  *  <p>
- *  This implementation uses a <em>red-black BST</em>.
- *  The <em>put</em>, <em>get</em>, <em>contains</em>, <em>remove</em>,
- *  <em>minimum</em>, <em>maximum</em>, <em>ceiling</em>, and <em>floor</em>
- *  operations each take &Theta;(log <em>n</em>) time in the worst case,
- *  where <em>n</em> is the number of key-value pairs in the symbol table.
- *  The <em>size</em> and <em>is-empty</em> operations take &Theta;(1) time.
- *  Construction takes &Theta;(1) time.
- *  <p>
- *  For additional documentation, see
- *  <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -75,7 +71,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(Key key) {
-        if (key == null) throw new IllegalArgumentException("calls get() with null key");
+        if (key == null) throw new IllegalArgumentException("called get() with null key");
         return st.get(key);
     }
 
@@ -90,7 +86,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new IllegalArgumentException("calls put() with null key");
+        if (key == null) throw new IllegalArgumentException("called put() with null key");
         if (val == null) st.remove(key);
         else             st.put(key, val);
     }
@@ -98,26 +94,12 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     /**
      * Removes the specified key and its associated value from this symbol table     
      * (if the key is in this symbol table).
-     * This is equivalent to {@code remove()}, but we plan to deprecate {@code delete()}.
      *
      * @param  key the key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new IllegalArgumentException("calls delete() with null key");
-        st.remove(key);
-    }
-
-    /**
-     * Removes the specified key and its associated value from this symbol table     
-     * (if the key is in this symbol table).
-     * This is equivalent to {@code delete()}, but we plan to deprecate {@code delete()}.
-     *
-     * @param  key the key
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
-    public void remove(Key key) {
-        if (key == null) throw new IllegalArgumentException("calls remove() with null key");
+        if (key == null) throw new IllegalArgumentException("called delete() with null key");
         st.remove(key);
     }
 
@@ -130,7 +112,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
-        if (key == null) throw new IllegalArgumentException("calls contains() with null key");
+        if (key == null) throw new IllegalArgumentException("called contains() with null key");
         return st.containsKey(key);
     }
 
@@ -187,7 +169,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @throws NoSuchElementException if this symbol table is empty
      */
     public Key min() {
-        if (isEmpty()) throw new NoSuchElementException("calls min() with empty symbol table");
+        if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
         return st.firstKey();
     }
 
@@ -198,7 +180,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @throws NoSuchElementException if this symbol table is empty
      */
     public Key max() {
-        if (isEmpty()) throw new NoSuchElementException("calls max() with empty symbol table");
+        if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
         return st.lastKey();
     }
 
@@ -211,9 +193,9 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key ceiling(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
+        if (key == null) throw new IllegalArgumentException("called ceiling() with null key");
         Key k = st.ceilingKey(key);
-        if (k == null) throw new NoSuchElementException("argument to ceiling() is too large");
+        if (k == null) throw new NoSuchElementException("all keys are less than " + key);
         return k;
     }
 
@@ -226,9 +208,9 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key floor(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to floor() is null");
+        if (key == null) throw new IllegalArgumentException("called floor() with null key");
         Key k = st.floorKey(key);
-        if (k == null) throw new NoSuchElementException("argument to floor() is too small");
+        if (k == null) throw new NoSuchElementException("all keys are greater than " + key);
         return k;
     }
 
@@ -249,7 +231,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

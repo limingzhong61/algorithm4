@@ -23,7 +23,7 @@ import java.util.Locale;
  *  various output streams, including standard output, file, and sockets.
  *  <p>
  *  For additional documentation, see
- *  <a href="https://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
+ *  <a href="http://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
  *  <i>Computer Science: An Interdisciplinary Approach</i>
  *  by Robert Sedgewick and Kevin Wayne.
  *
@@ -319,7 +319,7 @@ public class Out {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

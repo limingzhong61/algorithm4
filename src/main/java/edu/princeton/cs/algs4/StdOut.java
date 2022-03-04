@@ -20,10 +20,8 @@ import java.util.Locale;
  *  <b>Getting started.</b>
  *  To use this class, you must have {@code StdOut.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
- *  Otherwise, either download
- *  <a href = "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
- *  and add to your Java classpath or download
- *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
+ *  Otherwise, download
+ *  <a href = "http://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
  *  and put a copy in your working directory.
  *  <p>
  *  Here is an example program that uses {@code StdOut}:
@@ -41,7 +39,7 @@ import java.util.Locale;
  *  <p>
  *  <b>Differences with System.out.</b>
  *  The behavior of {@code StdOut} is similar to that of {@link System#out},
- *  but there are a few technical differences:
+ *  but there are a few subtle differences:
  *  <ul>
  *  <li> {@code StdOut} coerces the character-set encoding to UTF-8,
  *       which is a standard character encoding for Unicode.
@@ -54,8 +52,8 @@ import java.util.Locale;
  *  <p>
  *  <b>Reference.</b>
  *  For additional documentation,
- *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
- *  <em>Computer Science: An Interdisciplinary Approach</em>
+ *  see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ *  <em>Introduction to Programming in Java: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -84,6 +82,13 @@ public final class StdOut {
 
     // don't instantiate
     private StdOut() { }
+
+   /**
+     * Closes standard output.
+     */
+    public static void close() {
+        out.close();
+    }
 
    /**
      * Terminates the current line by printing the line-separator string.
@@ -315,7 +320,7 @@ public final class StdOut {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

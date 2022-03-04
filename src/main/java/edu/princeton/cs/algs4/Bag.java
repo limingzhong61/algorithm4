@@ -3,7 +3,7 @@
  *  Execution:    java Bag < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *
- *  A generic bag or multiset, implemented using a singly linked list.
+ *  A generic bag or multiset, implemented using a singly-linked list.
  *
  *  % more tobe.txt 
  *  to be or not to - be - - that - - - is
@@ -37,14 +37,13 @@ import java.util.NoSuchElementException;
  *  generic items. It supports insertion and iterating over the 
  *  items in arbitrary order.
  *  <p>
- *  This implementation uses a singly linked list with a static nested class Node.
+ *  This implementation uses a singly-linked list with a static nested class Node.
  *  See {@link LinkedBag} for the version from the
  *  textbook that uses a non-static nested class.
- *  See {@link ResizingArrayBag} for a version that uses a resizing array.
  *  The <em>add</em>, <em>isEmpty</em>, and <em>size</em> operations
  *  take constant time. Iteration takes time proportional to the number of items.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -109,14 +108,14 @@ public class Bag<Item> implements Iterable<Item> {
      * @return an iterator that iterates over the items in this bag in arbitrary order
      */
     public Iterator<Item> iterator()  {
-        return new LinkedIterator(first);  
+        return new ListIterator<Item>(first);  
     }
 
     // an iterator, doesn't implement remove() since it's optional
-    private class LinkedIterator implements Iterator<Item> {
+    private class ListIterator<Item> implements Iterator<Item> {
         private Node<Item> current;
 
-        public LinkedIterator(Node<Item> first) {
+        public ListIterator(Node<Item> first) {
             current = first;
         }
 
@@ -152,7 +151,7 @@ public class Bag<Item> implements Iterable<Item> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
