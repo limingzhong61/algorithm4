@@ -1,6 +1,6 @@
 package com.mars.algorithms.chapter6;
 
-import com.mars.algorithms.chapter1_3.Bag;
+import com.mars.algorithms.chapter1.chapter1_3.Bag;
 
 import edu.princeton.cs.algs4.In;
 

@@ -1,6 +1,6 @@
 package com.mars.algorithms.chapter6;
 
-import com.mars.algorithms.chapter2_3.Quick3way;
+import com.mars.algorithms.chapter2.chapter2_3.Quick3way;
 
 public class SuffixArray {
 	private final String[] suffixes;

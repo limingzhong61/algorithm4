@@ -33,9 +33,9 @@
 
 package edu.princeton.cs.algs4;
 
-import com.mars.algorithms.chapter4_2.Digraph;
-import com.mars.algorithms.chapter4_4.DirectedEdge;
-import com.mars.algorithms.chapter4_4.EdgeWeightedDigraph;
+import com.mars.algorithms.chapter4.chapter4_2.Digraph;
+import com.mars.algorithms.chapter4.chapter4_4.DirectedEdge;
+import com.mars.algorithms.chapter4.chapter4_4.EdgeWeightedDigraph;
 
 /**
  *  The {@code DepthFirstOrder} class represents a data type for 
