@@ -1,13 +1,14 @@
-package com.mars.algorithms.chapter3.chapter3_1;
+package com.mars.algorithms.chapter3_searching.chapter3_1;
 
 import com.mars.algorithms.chapter1.chapter1_3.Queue;
-
+//算法3.2　二分查找（基于有序数组）
 public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	private Key[] keys;
 	private Value[] vals;
 	private int N;
 
 	public BinarySearchST(int capacity) {
+		// 调整数组大小的标准代码请见算法1.1
 		keys = (Key[]) new Comparable[capacity];
 		vals = (Value[]) new Object[capacity];
 	}
@@ -32,7 +33,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return N == 0;
 	}
 
-	public int rank(Key key) {
+	public int rank(Key key) {	// 请见算法3.2（续1）
 		int lo = 0, hi = N - 1;
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
@@ -49,6 +50,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	}
 
 	public void put(Key key, Value val) {
+		// 查找键，找到则更新值，否则创建新的元素
 		int i = rank(key);
 		if (i < N && keys[i].compareTo(key) == 0) {
 			vals[i] = val;
@@ -70,6 +72,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	 * @param key
 	 */
 	public void delete(Key key) {
+		// 该方法的实现请见练习3.1.16
 		if (isEmpty()) {
 			return;
 		}

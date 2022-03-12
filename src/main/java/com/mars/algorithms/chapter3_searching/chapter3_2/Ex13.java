@@ -1,4 +1,4 @@
-package com.mars.algorithms.chapter3.chapter3_2;
+package com.mars.algorithms.chapter3_searching.chapter3_2;
 
 import edu.princeton.cs.algs4.StdIn;
 

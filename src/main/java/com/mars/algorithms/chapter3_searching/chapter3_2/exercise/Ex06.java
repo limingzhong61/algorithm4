@@ -1,15 +1,18 @@
-package com.mars.algorithms.chapter3.chapter3_2;
+package com.mars.algorithms.chapter3_searching.chapter3_2.exercise;
 
 import com.mars.algorithms.chapter1.chapter1_3.Queue;
+import edu.princeton.cs.algs4.StdOut;
 
-public class BST<Key extends Comparable<Key>, Value> {
-	private Node root;
+//基于二叉查找树的符号表
+public class Ex06<Key extends Comparable<Key>, Value> {
+	private Node root; 				// 二叉查找树的根结点
 
 	private class Node {
-		private Key key;
-		private Value val;
-		private Node left, right;
-		private int N;
+		private Key key;		// 键
+		private Value val;		// 值
+		private Node left, right;		// 指向子树的链接
+		private int N;					// 以该结点为根的子树中的结点总数
+		private int height;				// 以该结点为根的子树中的高度
 
 		public Node(Key key, Value val, int N) {
 			this.key = key;
@@ -35,6 +38,8 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
 
 	private Value get(Node x, Key key) {
+		// 在以x为根结点的子树中查找并返回key所对应的值；
+		// 如果找不到则返回null
 		if (x == null) {
 			return null;
 		}
@@ -49,10 +54,13 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
 
 	public void put(Key key, Value val) {
+		// 查找key，找到则更新它的值，否则为它创建一个新的结点
 		root = put(root, key, val);
 	}
 
 	private Node put(Node x, Key key, Value val) {
+		// 如果key存在于以x为根结点的子树中则更新它的值；
+		// 否则将以key和val为键值对的新结点插入到该子树中
 		if (x == null) {
 			return new Node(key, val, 1);
 		}
@@ -149,6 +157,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
 
 	private Node select(Node x, int k) {
+		// 返回排名为k的结点
 		if (x == null) {
 			return null;
 		}
@@ -167,6 +176,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
 
 	private int rank(Key key, Node x) {
+		// 返回以x为根结点的子树中小于x.key的键的数量
 		if (x == null) {
 			return 0;
 		}
@@ -262,16 +272,36 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 
-	// Exercise 3.2.6
-	public int height() {
+	/**
+	 * Exercise 3.2.6
+	 * @return height of bs tree
+	 */
+	public int height(){
 		return height(root);
 	}
 
-	private int height(Node x) {
+	/**
+	 * Exercise 3.2.6
+	 * @return height of bs tree
+	 */
+	private int height(Node p){
+		if(p == null){
+			return 0;
+		}
+		return Math.max(height(p.right),height(p.left)) + 1;
+	}
+
+
+	// Exercise 3.2.6, 高度少了1
+	public int heightOther() {
+		return heightOther(root);
+	}
+
+	private int heightOther(Node x) {
 		if (x == null) {
 			return -1;
 		}
-		return 1 + Math.max(height(x.left), height(x.right));
+		return 1 + Math.max(heightOther(x.left), heightOther(x.right));
 	}
 
 	// Exercise 3.2.32
@@ -309,5 +339,28 @@ public class BST<Key extends Comparable<Key>, Value> {
 			}
 		}
 		return true;
+	}
+
+	public static void main(String[] args) {
+		String str = "H C S A E X R";
+		String[] arr = str.split(" ");
+
+		Ex06<String,Integer> ST = new Ex06<>();
+
+		for(int i=0; i<arr.length; i++){
+			ST.put(arr[i], i);
+		}
+
+		StdOut.println(ST.height());
+		System.out.println("heightOther:"+ST.heightOther());
+		str = "A B C D E F G";
+		arr = str.split(" ");
+		ST = new Ex06<>();
+
+		for(int i=0; i<arr.length; i++){
+			ST.put(arr[i], i);
+		}
+
+		StdOut.println(ST.height());
 	}
 }

@@ -1,4 +1,4 @@
-package com.mars.algorithms.chapter3.chapter3_5;
+package com.mars.algorithms.chapter3_searching.chapter3_5;
 
 import com.mars.algorithms.chapter1.chapter1_3.Queue;
 

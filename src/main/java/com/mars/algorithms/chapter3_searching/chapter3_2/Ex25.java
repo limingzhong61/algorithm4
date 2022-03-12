@@ -1,4 +1,4 @@
-package com.mars.algorithms.chapter3.chapter3_2;
+package com.mars.algorithms.chapter3_searching.chapter3_2;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ public class Ex25 {
 			return;
 		}
 		int mid = lo + (hi - lo) / 2;
-		bst.put(a[mid], mid);
+		bst.putRecur(a[mid], mid);
 		balance(bst, a, lo, mid - 1);
 		balance(bst, a, mid + 1, hi);
 	}

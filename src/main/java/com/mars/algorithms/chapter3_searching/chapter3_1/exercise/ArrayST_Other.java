@@ -1,13 +1,13 @@
-package com.mars.algorithms.chapter3.chapter3_1;
+package com.mars.algorithms.chapter3_searching.chapter3_1.exercise;
 
 import com.mars.algorithms.chapter1.chapter1_3.Queue;
 
-public class ArrayST<Key, Value> {
+public class ArrayST_Other<Key, Value> {
 	private Key[] keys;
 	private Value[] vals;
 	private int N;
 
-	public ArrayST(int capacity) {
+	public ArrayST_Other(int capacity) {
 		keys = (Key[]) new Object[capacity];
 		vals = (Value[]) new Object[capacity];
 		N = 0;

@@ -1,4 +1,4 @@
-package com.mars.algorithms.chapter3.chapter3_2;
+package com.mars.algorithms.chapter3_searching.chapter3_2;
 
 import edu.princeton.cs.algs4.StdIn;
 
@@ -8,7 +8,7 @@ public class TestBST {
 		BST<String, Integer> bst = new BST<>();
 		for (int i = 0; !StdIn.isEmpty(); i++) {
 			String key = StdIn.readString();
-			bst.put(key, i);
+			bst.putRecur(key, i);
 		}
 		for (String s : bst.keys()) {
 			System.out.println(s + " " + bst.get(s));
@@ -36,3 +36,53 @@ public class TestBST {
 		}
 	}
 }
+/*
+S E A R C H E X A M P L E
+^D
+A 8
+C 4
+E 12
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+X 7
+min(): A
+max(): X
+floor("F"): E
+ceiling("C"): C
+select(1): C
+rank("R"): 7
+delete("D"):
+A 8
+C 4
+E 12
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+X 7
+deleteMin():
+C 4
+E 12
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+X 7
+deleteMax():
+C 4
+E 12
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+* */

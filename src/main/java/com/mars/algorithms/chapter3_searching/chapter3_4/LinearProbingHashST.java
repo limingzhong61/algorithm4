@@ -1,4 +1,4 @@
-package com.mars.algorithms.chapter3.chapter3_4;
+package com.mars.algorithms.chapter3_searching.chapter3_4;
 
 public class LinearProbingHashST<Key, Value> {
 	private int N;

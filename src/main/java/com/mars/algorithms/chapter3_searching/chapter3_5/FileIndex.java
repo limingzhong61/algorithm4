@@ -1,4 +1,4 @@
-package com.mars.algorithms.chapter3.chapter3_5;
+package com.mars.algorithms.chapter3_searching.chapter3_5;
 
 import java.io.File;
 

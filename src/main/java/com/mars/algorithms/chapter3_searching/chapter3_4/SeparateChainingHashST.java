@@ -1,6 +1,6 @@
-package com.mars.algorithms.chapter3.chapter3_4;
+package com.mars.algorithms.chapter3_searching.chapter3_4;
 
-import com.mars.algorithms.chapter3.chapter3_1.SequentialSearchST;
+import com.mars.algorithms.chapter3_searching.chapter3_1.SequentialSearchST;
 
 public class SeparateChainingHashST<Key, Value> {
 	private int N;

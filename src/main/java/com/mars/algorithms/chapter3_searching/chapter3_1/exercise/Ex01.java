@@ -1,5 +1,6 @@
-package com.mars.algorithms.chapter3.chapter3_1;
+package com.mars.algorithms.chapter3_searching.chapter3_1.exercise;
 
+import com.mars.algorithms.chapter3_searching.chapter3_1.SequentialSearchST;
 import edu.princeton.cs.algs4.StdIn;
 
 public class Ex01 {
@@ -25,3 +26,8 @@ public class Ex01 {
 		System.out.println("GPA: " + sum / a.length);
 	}
 }
+/*
+A+ A A- B+ B B- C+ C C- D F
+^D
+GPA: 2.5454545454545454
+* */
