@@ -1,19 +1,19 @@
 package com.mars.algorithms.chapter3_searching.chapter3_3;
 
 import com.mars.algorithms.chapter1.chapter1_3.Queue;
-
+//算法3.4　红黑树的插入算法
 public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	private Node root;
 
 	private static final boolean RED = true;
 	private static final boolean BLACK = false;
 
-	private class Node {
-		private Key key;
-		private Value val;
-		private Node left, right;
-		private int N;
-		private boolean color;
+	private class Node {		// 含有color变量的Node对象（请见3.3.2.4节）
+		private Key key;		// 键
+		private Value val;		// 相关联的值
+		private Node left, right;		// 左右子树
+		private int N;					// 这棵子树中的结点总数
+		private boolean color;			// 由其父结点指向它的链接的颜色
 
 		public Node(Key key, Value val, int N, boolean color) {
 			this.key = key;
@@ -24,6 +24,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	}
 
 	private boolean isRed(Node x) {
+		//约定空链接为黑色
 		if (x == null) {
 			return false;
 		}
@@ -71,12 +72,13 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	}
 
 	public void put(Key key, Value val) {
+		// 查找key，找到则更新其值，否则为它新建一个结点
 		root = put(root, key, val);
 		root.color = BLACK;
 	}
 
 	private Node put(Node h, Key key, Value val) {
-		if (h == null) {
+		if (h == null) {		// 标准的插入操作，和父结点用红链接相连
 			return new Node(key, val, 1, RED);
 		}
 
