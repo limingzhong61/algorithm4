@@ -2,6 +2,13 @@ package com.mars.algorithms.chapter1.chapter1_3;
 
 import java.util.Iterator;
 
+/**
+ * @author Lenovo
+ *
+ * 背包是一种不支持从中删除元素的集合数据类型——它的
+ * 目的就是帮助用例收集元素并迭代遍历所有收集到的元素（用
+ * 例也可以检查背包是否为空或者获取背包中元素的数量
+ */
 public class Bag<Item> implements Iterable<Item> {
 	private Node first;
 	private int N;

@@ -85,7 +85,9 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      */
     public boolean contains(int i) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) {
+            throw new IndexOutOfBoundsException();
+        }
         return qp[i] != -1;
     }
 
@@ -108,8 +110,12 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *         with index {@code i}
      */
     public void insert(int i, Key key) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
-        if (contains(i)) throw new IllegalArgumentException("index is already in the priority queue");
+        if (i < 0 || i >= maxN) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (contains(i)) {
+            throw new IllegalArgumentException("index is already in the priority queue");
+        }
         n++;
         qp[i] = n;
         pq[n] = i;

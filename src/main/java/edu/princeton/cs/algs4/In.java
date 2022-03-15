@@ -54,7 +54,7 @@ import java.util.regex.Pattern;
  *  @author Kevin Wayne
  */
 public final class In {
-    
+
     ///// begin: section (1 of 2) of code duplicated from In to StdIn.
     
     // assume Unicode UTF-8 encoding
@@ -97,7 +97,9 @@ public final class In {
      * @throws IllegalArgumentException if {@code socket} is {@code null}
      */
     public In(Socket socket) {
-        if (socket == null) throw new IllegalArgumentException("socket argument is null");
+        if (socket == null) {
+            throw new IllegalArgumentException("socket argument is null");
+        }
         try {
             InputStream is = socket.getInputStream();
             scanner = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
@@ -116,7 +118,9 @@ public final class In {
      * @throws IllegalArgumentException if {@code url} is {@code null}
      */
     public In(URL url) {
-        if (url == null) throw new IllegalArgumentException("url argument is null");
+        if (url == null) {
+            throw new IllegalArgumentException("url argument is null");
+        }
         try {
             URLConnection site = url.openConnection();
             InputStream is     = site.getInputStream();
@@ -130,13 +134,17 @@ public final class In {
 
    /**
      * Initializes an input stream from a file.
-     *
+     * IDEA usage: In Idea working directory is Java project in computer absolute path,
+    * so use file `fileName.txt`in resources directory, can be writing as
+    * `.\src\main\resources\fileName.txt`
      * @param  file the file
      * @throws IllegalArgumentException if cannot open {@code file}
      * @throws IllegalArgumentException if {@code file} is {@code null}
      */
     public In(File file) {
-        if (file == null) throw new IllegalArgumentException("file argument is null");
+        if (file == null) {
+            throw new IllegalArgumentException("file argument is null");
+        }
         try {
             // for consistency with StdIn, wrap with BufferedInputStream instead of use
             // file as argument to Scanner
@@ -159,7 +167,9 @@ public final class In {
      * @throws IllegalArgumentException if {@code name} is {@code null}
      */
     public In(String name) {
-        if (name == null) throw new IllegalArgumentException("argument is null");
+        if (name == null) {
+            throw new IllegalArgumentException("argument is null");
+        }
         try {
             // first try to read file from local file system
             File file = new File(name);

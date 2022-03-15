@@ -1,6 +1,6 @@
 package com.mars.algorithms.chapter6;
 
-import com.mars.algorithms.chapter4.chapter4_1.Graph;
+import com.mars.algorithms.chapter4_graph.chapter4_1.Graph;
 
 public class LongestPath {
 	private boolean[] marked;

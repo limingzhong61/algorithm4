@@ -2,8 +2,8 @@ package com.mars.algorithms.chapter5.chapter5_4;
 
 import com.mars.algorithms.chapter1.chapter1_3.Bag;
 import com.mars.algorithms.chapter1.chapter1_3.Stack;
-import com.mars.algorithms.chapter4.chapter4_2.Digraph;
-import com.mars.algorithms.chapter4.chapter4_2.DirectedDFS;
+import com.mars.algorithms.chapter4_graph.chapter4_2_digraph.Digraph;
+import com.mars.algorithms.chapter4_graph.chapter4_2_digraph.DirectedDFS;
 
 public class NFA {
 	private char[] re; // ƥ��ת��

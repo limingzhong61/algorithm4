@@ -5,6 +5,9 @@ import edu.princeton.cs.algs4.SET;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * @author Lenovo
+ */
 public class WhiteFilter {
 
 	public static void main(String[] args) {

@@ -9,7 +9,9 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class LookupIndex {
 	public static void main(String[] args) {
+		// （索引数据库）
 		In in = new In(args[0]);
+		// （分隔符）
 		String sp = args[1];
 		ST<String, Queue<String>> st = new ST<String, Queue<String>>();
 		ST<String, Queue<String>> ts = new ST<String, Queue<String>>();
