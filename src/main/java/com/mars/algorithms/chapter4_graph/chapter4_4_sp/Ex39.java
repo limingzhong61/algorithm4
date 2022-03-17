@@ -1,35 +1,55 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
+
+import java.util.Comparator;
 
 import com.mars.algorithms.chapter1.chapter1_3.Stack;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.StdOut;
 
-public class AcyclicSP {
+public class Ex39 {
+	private boolean[] marked;
 	private DirectedEdge[] edgeTo;
 	private double[] distTo;
+	private MinPQ<DirectedEdge> pq;
 
-	public AcyclicSP(EdgeWeightedDigraph G, int s) {
+	private class ByDistanceFromSource implements Comparator<DirectedEdge> {
+		public int compare(DirectedEdge e, DirectedEdge f) {
+			double dist1 = distTo[e.from()] + e.weight();
+			double dist2 = distTo[f.from()] + f.weight();
+			return Double.compare(dist1, dist2);
+		}
+	}
+
+	public Ex39(EdgeWeightedDigraph G, int s) {
+		marked = new boolean[G.V()];
 		edgeTo = new DirectedEdge[G.V()];
 		distTo = new double[G.V()];
+		pq = new MinPQ<>(new ByDistanceFromSource());
 
 		for (int v = 0; v < G.V(); v++) {
 			distTo[v] = Double.POSITIVE_INFINITY;
 		}
 		distTo[s] = 0.0;
 
-		EdgeWeightedTopological top = new EdgeWeightedTopological(G);
-		for (int v : top.order()) {
-			relax(G, v);
+		relax(G, s);
+		while (!pq.isEmpty()) {
+			int w = pq.delMin().to();
+			if (!marked[w]) {
+				relax(G, w);
+			}
 		}
 	}
 
 	private void relax(EdgeWeightedDigraph G, int v) {
+		marked[v] = true;
 		for (DirectedEdge e : G.adj(v)) {
 			int w = e.to();
 			if (distTo[w] > distTo[v] + e.weight()) {
 				distTo[w] = distTo[v] + e.weight();
 				edgeTo[w] = e;
+				pq.insert(e);
 			}
 		}
 	}
@@ -56,7 +76,7 @@ public class AcyclicSP {
 	public static void main(String[] args) {
 		EdgeWeightedDigraph G = new EdgeWeightedDigraph(new In(args[0]));
 		int s = Integer.parseInt(args[1]);
-		AcyclicSP sp = new AcyclicSP(G, s);
+		Ex39 sp = new Ex39(G, s);
 
 		for (int t = 0; t < G.V(); t++) {
 			StdOut.print(s + " to " + t);

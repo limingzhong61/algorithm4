@@ -1,8 +1,12 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * 货币兑换中的套汇
+ * @author LiMingzhong
+ */
 public class Arbitrage {
 	public static void main(String[] args) {
 		int V = StdIn.readInt();
@@ -31,3 +35,15 @@ public class Arbitrage {
 		}
 	}
 }
+/*
+5
+USD 1      0.741  0.657  1.061  1.005
+EUR 1.349  1      0.888  1.433  1.366
+GBP 1.521  1.126  1      1.614  1.538
+CHF 0.942  0.698  0.619  1      0.953
+CAD 0.995  0.732  0.650  1.049  1
+output:
+1000.00000 USD =  741.00000 EUR
+ 741.00000 EUR = 1012.20600 CAD
+1012.20600 CAD = 1007.14497 USD
+* */

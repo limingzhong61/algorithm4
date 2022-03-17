@@ -1,4 +1,4 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
 
 public class DijkstraAllPairsSP {
 	private DijkstraSP[] all;

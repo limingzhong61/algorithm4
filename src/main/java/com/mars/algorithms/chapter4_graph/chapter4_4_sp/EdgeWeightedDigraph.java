@@ -1,13 +1,17 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
 
 import com.mars.algorithms.chapter1.chapter1_3.Bag;
 
 import edu.princeton.cs.algs4.In;
 
+/**
+ * 加权有向图的数据类型
+ * @author LiMingzhong
+ */
 public class EdgeWeightedDigraph {
-	private final int V;
-	private int E;
-	private Bag<DirectedEdge>[] adj;
+	private final int V; // 顶点总数
+	private int E; // 边的总数
+	private Bag<DirectedEdge>[] adj; // 邻接表
 
 	public EdgeWeightedDigraph(int V) {
 		this.V = V;

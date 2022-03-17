@@ -1,9 +1,13 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
 
+/**
+ * 加权有向边的数据类型
+ * @author LiMingzhong
+ */
 public class DirectedEdge {
-	private final int v;
-	private final int w;
-	private final double weight;
+	private final int v; // 边的起点
+	private final int w; // 边的终点
+	private final double weight; // 边的权重
 
 	public DirectedEdge(int v, int w, double weight) {
 		this.v = v;

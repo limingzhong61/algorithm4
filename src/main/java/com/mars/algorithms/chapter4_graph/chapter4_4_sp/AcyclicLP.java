@@ -1,9 +1,13 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
 
 import com.mars.algorithms.chapter1.chapter1_3.Stack;
 
 import edu.princeton.cs.algs4.In;
 
+/**
+ * 寻找一幅无环加权有向图中的最长路径
+ * @author LiMingzhong
+ */
 public class AcyclicLP {
 	private DirectedEdge[] edgeTo;
 	private double[] distTo;

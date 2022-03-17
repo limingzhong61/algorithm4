@@ -1,29 +1,32 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
 
 import com.mars.algorithms.chapter1.chapter1_3.Stack;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.StdOut;
 
-public class DijkstraSP {
+/**
+ * 　无环加权有向图的最短路径算法
+ * 按照拓扑顺序处理无环有向图中的顶点
+ * Acyclic: adj. 非循环的；非环的
+ * @author LiMingzhong
+ */
+public class AcyclicSP {
 	private DirectedEdge[] edgeTo;
 	private double[] distTo;
-	private IndexMinPQ<Double> pq;
 
-	public DijkstraSP(EdgeWeightedDigraph G, int s) {
+	public AcyclicSP(EdgeWeightedDigraph G, int s) {
 		edgeTo = new DirectedEdge[G.V()];
 		distTo = new double[G.V()];
-		pq = new IndexMinPQ<Double>(G.V());
 
 		for (int v = 0; v < G.V(); v++) {
 			distTo[v] = Double.POSITIVE_INFINITY;
 		}
 		distTo[s] = 0.0;
 
-		pq.insert(s, 0.0);
-		while (!pq.isEmpty()) {
-			relax(G, pq.delMin());
+		EdgeWeightedTopological top = new EdgeWeightedTopological(G);
+		for (int v : top.order()) {
+			relax(G, v);
 		}
 	}
 
@@ -33,16 +36,12 @@ public class DijkstraSP {
 			if (distTo[w] > distTo[v] + e.weight()) {
 				distTo[w] = distTo[v] + e.weight();
 				edgeTo[w] = e;
-				if (pq.contains(w)) {
-					pq.changeKey(w, distTo[w]);
-				} else {
-					pq.insert(w, distTo[w]);
-				}
 			}
 		}
 	}
 
 	public double distTo(int v) {
+		// 最短路径树实现中的标准查询算法
 		return distTo[v];
 	}
 
@@ -64,7 +63,7 @@ public class DijkstraSP {
 	public static void main(String[] args) {
 		EdgeWeightedDigraph G = new EdgeWeightedDigraph(new In(args[0]));
 		int s = Integer.parseInt(args[1]);
-		DijkstraSP sp = new DijkstraSP(G, s);
+		AcyclicSP sp = new AcyclicSP(G, s);
 
 		for (int t = 0; t < G.V(); t++) {
 			StdOut.print(s + " to " + t);

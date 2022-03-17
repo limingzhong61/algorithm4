@@ -1,15 +1,19 @@
-package com.mars.algorithms.chapter4_graph.chapter4_4;
+package com.mars.algorithms.chapter4_graph.chapter4_4_sp;
 
 import com.mars.algorithms.chapter1.chapter1_3.Queue;
 import com.mars.algorithms.chapter1.chapter1_3.Stack;
 
+/**
+ * 基于队列的Bellman-Ford 算法
+ * @author LiMingzhong
+ */
 public class BellmanFordSP {
-	private double[] distTo;
-	private DirectedEdge[] edgeTo;
-	private boolean[] onQ;
-	private Queue<Integer> queue;
-	private int cost;
-	private Iterable<DirectedEdge> cycle;
+	private double[] distTo; // 从起点到某个顶点的路径长度
+	private DirectedEdge[] edgeTo; // 从起点到某个顶点的最后一条边
+	private boolean[] onQ; // 该顶点是否存在于队列中
+	private Queue<Integer> queue; // 正在被放松的顶点
+	private int cost; // relax()的调用次数
+	private Iterable<DirectedEdge> cycle; // edgeTo[]中的是否有负权重环
 
 	public BellmanFordSP(EdgeWeightedDigraph G, int s) {
 		distTo = new double[G.V()];
@@ -47,6 +51,7 @@ public class BellmanFordSP {
 	}
 
 	public double distTo(int v) {
+		// 最短路径树实现中的标准查询算法
 		return distTo[v];
 	}
 
