@@ -1,3 +1,6 @@
+## 前言
+自己写的算法（第4版）数据的相关代码。  
+建立于在他人基础上https://github.com/kevin-wayne/algs4
 ## Overview
 
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
