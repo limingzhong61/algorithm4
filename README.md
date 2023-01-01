@@ -1,5 +1,5 @@
 ## 前言
-自己写的算法（第4版）数据的相关代码。  
+自己写的算法（第4版）练习的相关代码。  
 建立于在他人基础上https://github.com/kevin-wayne/algs4
 ## Overview
 
